@@ -3,12 +3,14 @@ resource "aws_instance" "web_server" {
   instance_type = "t2.micro"
 }
 
+/*
 resource "aws_instance" "bastion" {
   ami = "${lookup(var.web_server_amis, var.aws_region)}"
   instance_type = "t2.micro"
 
   count = "${var.target_env == "dev" ? 1 : 2}"
 }
+*/
 
 output "web_server_kpublic_ip" {
   value = "${aws_instance.web_server.public_ip}"

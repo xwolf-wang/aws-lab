@@ -9,15 +9,14 @@ resource "aws_instance" "web_server" {
 
   vpc_security_group_ids = ["${aws_security_group.web_server_sec_group.id}"]
 
+  provisioner "file" {
+    source = "bootstrap.sh"
+    destination = "/tmp/bootstrap.sh"
+  }
   provisioner "remote-exec" {
     inline = [
-      "sudo yum install -y httpd",
-      "sudo service httpd start",
-      "sudo groupadd www",
-      "sudo usermod -a -G www ec2-user",
-      "sudo usermod -a -G www apache",
-      "sudo chown -R apache:www /var/www",
-      "sudo chmod 770 -R /var/www"
+      "sudo chmod +x /tmp/bootstrap.sh",
+      "/tmp/bootstrap.sh"
     ]
   }
 
