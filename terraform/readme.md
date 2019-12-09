@@ -2,8 +2,8 @@
 ssh-keygen -t rsa -b 4096 -f aws_rsa
 
 -Environment
-export TF_VAR_aws_access_key="AKIAUJ26H7EXMUZ42LAP"
-export TF_VAR_aws_secret_key="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"
+export TF_VAR_aws_access_key="key"
+export TF_VAR_aws_secret_key="secret"
 
 --
 terraform plan -var target_env=prod
