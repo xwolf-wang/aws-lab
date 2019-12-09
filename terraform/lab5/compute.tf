@@ -20,6 +20,11 @@ resource "aws_instance" "web_server" {
     ]
   }
 
+  provisioner "file" {
+    source = "index.html"
+    destination = "/var/www/html/index.html"
+  }
+
   connection {
     type = "ssh"
     user = "ec2-user"
