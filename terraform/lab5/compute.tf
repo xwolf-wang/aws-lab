@@ -13,6 +13,12 @@ resource "aws_instance" "web_server" {
     source = "bootstrap.sh"
     destination = "/tmp/bootstrap.sh"
   }
+
+  provisioner "file" {
+    source = "httpd.conf"
+    destination = "/tmp/httpd.conf"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "sudo chmod +x /tmp/bootstrap.sh",
@@ -24,6 +30,8 @@ resource "aws_instance" "web_server" {
     source = "index.html"
     destination = "/var/www/html/index.html"
   }
+
+
 
   connection {
     type = "ssh"
