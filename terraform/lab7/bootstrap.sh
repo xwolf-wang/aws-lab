@@ -42,7 +42,7 @@ mvn clean package -Dmaven.test.skip=true
 if [ $# -eq 0 ]; then
     version=1
 fi
-version=$1
+version=1
 cd ./aws_web
 docker build -t aws_web:v1.0.${version} .
 
