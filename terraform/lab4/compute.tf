@@ -3,7 +3,7 @@ resource "aws_instance" "web_server" {
   instance_type = "t2.micro"
 
   subnet_id = "${aws_default_subnet.learntf_default_subnet.id}"
-  depends_on = ["aws_s3_bucket.learntf-bins"]
+//  depends_on = ["aws_s3_bucket.learntf-bins"]
 
   key_name = "${aws_key_pair.deployer-keypair.key_name}"
 
